@@ -1,0 +1,6 @@
+{
+    "require": {
+        "doctrine/collections": "^1.6",
+        "firebase/php-jwt": "^5.0"
+    }
+}
