@@ -1,5 +1,11 @@
 ## yaf examples
 
+## YAF 配置参考
+
+> https://my.oschina.net/liuzhihe/blog/1529664
+> http://www.mamicode.com/info-detail-1589326.html
+> https://www.cnblogs.com/wt645631686/p/7676784.html
+
 ```
 php composer.phar install
 ```
