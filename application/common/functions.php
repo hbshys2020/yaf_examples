@@ -77,6 +77,7 @@ if (!function_exists('file_info'))
         $info['ext']         = file_ext($file);
         $info['file_size']   = format_bytes($info['filesize']);
         $info['file_atime']  = date('Y-m-d H:i:s',$info['fileatime']);
+        $info['file_ctime']  = date('Y-m-d H:i:s',$info['filectime']);
         $info['file_mtime']  = date('Y-m-d H:i:s',$info['filemtime']);
         return $info;
     }
