@@ -2,9 +2,9 @@
 
 ## YAF 配置参考
 
-> https://my.oschina.net/liuzhihe/blog/1529664
-> http://www.mamicode.com/info-detail-1589326.html
-> https://www.cnblogs.com/wt645631686/p/7676784.html
+- [Yaf加载类库](https://my.oschina.net/liuzhihe/blog/1529664)
+- [Yaf框架下类的自动加载](http://www.mamicode.com/info-detail-1589326.html)
+- [yaf框架加载全局公共函数](https://www.cnblogs.com/wt645631686/p/7676784.html)
 
 ```
 php composer.phar install
