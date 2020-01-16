@@ -13,6 +13,11 @@ class Bootstrap extends Yaf\Bootstrap_Abstract{
         //把配置保存起来
     }
 
+    public function _initCommonFunctions(){
+        //加载全局公共函数
+        \Yaf\Loader::import(Yaf\Application::app()->getConfig()->application->directory . '/common/functions.php');
+    }
+
     public function _initPlugin(Yaf\Dispatcher $dispatcher) {
         //注册一个插件
         $objSamplePlugin = new SamplePlugin();

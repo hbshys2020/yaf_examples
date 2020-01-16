@@ -4,6 +4,6 @@ namespace Demo;
 
 class Demo{
     public function detail(){
-        return __FILE__;
+        return file_list_info(APP_PATH);
     }
 }
