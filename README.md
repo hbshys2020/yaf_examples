@@ -5,7 +5,7 @@
 - [Yaf加载类库](https://my.oschina.net/liuzhihe/blog/1529664)
 - [Yaf框架下类的自动加载](http://www.mamicode.com/info-detail-1589326.html)
 - [yaf框架加载全局公共函数](https://www.cnblogs.com/wt645631686/p/7676784.html)
-
+- [yaf 基本功能介绍（含常用类库）](https://my.oschina.net/u/172914/blog/1358714)
 ```
 php composer.phar install
 ```
