@@ -9,8 +9,12 @@
 # yaf.use_namespace    0        PHP_INI_SYSTEM  开启的情况下, Yaf将会使用命名空间方式注册自己的类, 比如Yaf_Application将会变成Yaf\Application
 # yaf.use_spl_autoload 0        PHP_INI_ALL     开启的情况下, Yaf在加载不成功的情况下, 会继续让PHP的自动加载函数加载, 从性能考虑, 除非特殊情况, 否则保持这个选项关闭
 
-define('APP_PATH', realpath(__DIR__));
-$_config = new \Yaf\Config\Ini( APP_PATH . "/conf/application.ini" ,\Yaf\ENVIRON);
+define('APP_ROOT', realpath(__DIR__));
+define('APP_PATH', APP_ROOT . DIRECTORY_SEPARATOR . 'application');
+define('CONFIG_PATH',  APP_ROOT . DIRECTORY_SEPARATOR . 'conf');
+define('STORAGE_PATH', APP_ROOT . DIRECTORY_SEPARATOR . 'storage');
+
+$_config = new \Yaf\Config\Ini( CONFIG_PATH . DIRECTORY_SEPARATOR . 'application.ini' ,\Yaf\ENVIRON);
 (isset($_config->library) && !empty($_config->library)) && ini_set('yaf.library', $_config->library); // 注册全局类库
 new Yaf\Application($_config->toArray(),\Yaf\ENVIRON);
 $_config = null;unset($_config);

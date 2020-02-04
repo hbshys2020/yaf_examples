@@ -1,9 +1,11 @@
 <?php
 class DemoController extends \Yaf\Controller_Abstract{
     public function indexAction(){
-        $demo = (new \Demo\Demo)->detail();
         echo '<pre>';
-        print_r($demo);
+        $demo = new \Demo\Demo();
+        print_r($demo->detail());
+        print_r($demo->db(1));
+        print_r($demo->model(1));
         exit;
     }
 }

@@ -7,15 +7,27 @@
  * 这些方法, 都接受一个参数:Yaf\Dispatcher $dispatcher
  * 调用的次序, 和申明的次序相同
  */
+
+use Yaf\Loader;
+use Yaf\Application;
+use Yaf\Registry;
+
+use Illuminate\Database\Capsule\Manager as Capsule;
+use Illuminate\Events\Dispatcher;
+use Illuminate\Container\Container;
+
 class Bootstrap extends Yaf\Bootstrap_Abstract{
 
+    protected $config;
     public function _initConfig() {
         //把配置保存起来
+        $this->config = Yaf\Application::app()->getConfig()->toArray();
+        Registry::set('config',$this->config);
     }
 
     public function _initCommonFunctions(){
         //加载全局公共函数
-        \Yaf\Loader::import(Yaf\Application::app()->getConfig()->application->directory . '/common/functions.php');
+        Loader::import(APP_PATH . '/common/functions.php');
     }
 
     public function _initPlugin(Yaf\Dispatcher $dispatcher) {
@@ -28,13 +40,33 @@ class Bootstrap extends Yaf\Bootstrap_Abstract{
         //在这里注册自己的路由协议,默认使用简单路由
     }
 
-    public function _initView(Yaf\Dispatcher $dispatcher){
+    public function _initView(Yaf\Dispatcher $dispatcher) {
         //在这里注册自己的view控制器，例如smarty,firekylin
     }
 
-    public function _initLoadComposer(Yaf\Dispatcher $dispatcher){
+    public function _initLoader(Yaf\Dispatcher $dispatcher) {
         //加载composer
-        \Yaf\Loader::import(APP_PATH . '/vendor/autoload.php');
+        $autoload = APP_ROOT . '/vendor/autoload.php';
+        if(file_exists($autoload)){
+            Loader::import(APP_ROOT . '/vendor/autoload.php');
+        }
+    }
+
+    public function _initDbAdpter() {
+        $capsule = new Capsule;
+        // 创建链接
+        foreach($this->config['database'] as $name=>$val){
+            $capsule->addConnection($val,$name);
+        }
+        // $capsule->addConnection($this->config['database']['gc_case']);
+        $capsule->setEventDispatcher(new Dispatcher(new Container));
+        // 设置全局静态可访问
+        // Make this Capsule instance available globally via static methods... (optional)
+        $capsule->setAsGlobal();
+        // 启动Eloquent
+        // Setup the Eloquent ORM... (optional; unless you've used setEventDispatcher())
+        $capsule->bootEloquent();
+        class_alias(\Illuminate\Database\Capsule\Manager::class,'DB');
     }
 
 }
