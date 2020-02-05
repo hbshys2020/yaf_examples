@@ -8,6 +8,11 @@
 - [yaf 基本功能介绍（含常用类库）](https://my.oschina.net/u/172914/blog/1358714)
 - [Swoole实战之手撸HttpServer框架](http://www.jtthink.com/course/play/1709)
 - [Swoole实战之手撸HttpServer框架](https://www.bilibili.com/video/av75861569?p=31)
+- [yaf 基础](https://www.jianshu.com/p/de301d1045b8)
+- [yaf 基本功能介绍（含常用类库）](https://my.oschina.net/u/172914/blog/1358714)
+- [Yaf集成Eloquent](https://www.jianshu.com/p/72cb2f81a76a)
+- [Yaf 使用 Eloquent ORM 做数据层](https://fengqi.me/php/386.html/comment-page-1)
+- [yaf框架加载全局公共函数](https://www.cnblogs.com/wt645631686/p/7676784.html)
 ```
 php composer.phar install
 ```

@@ -3,6 +3,7 @@
         "doctrine/collections": "^1.6",
         "firebase/php-jwt": "^5.0",
         "illuminate/database": "^6.11",
-        "illuminate/events": "^6.11"
+        "illuminate/events": "^6.11",
+        "doctrine/dbal": "^2.10"
     }
 }
