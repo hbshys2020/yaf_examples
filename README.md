@@ -14,6 +14,7 @@ php composer.phar install
 
 * [php-casbin](https://github.com/php-casbin/php-casbin)
 * [collections](https://github.com/doctrine/collections)
+* [Eloquent ORM](https://packagist.org/packages/illuminate/database)
 
 create a new repository on the command line
 ```
