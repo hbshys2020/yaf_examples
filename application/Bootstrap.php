@@ -54,8 +54,9 @@ class Bootstrap extends Yaf\Bootstrap_Abstract{
 
     public function _initDbAdpter() {
         $capsule = new Capsule;
-        // 创建链接
+        // 多数据库支持
         foreach($this->config['database'] as $name=>$val){
+            // 创建连接
             $capsule->addConnection($val,$name);
         }
         // $capsule->addConnection($this->config['database']['gc_case']);

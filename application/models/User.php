@@ -1,8 +1,6 @@
 <?php
 
-use Illuminate\Database\Eloquent\Model;
-
-class UserModel extends Model{
+class UserModel extends \BaseModel{
     const CREATED_AT = 'add_time';
     const UPDATED_AT = 'update_time';
 
