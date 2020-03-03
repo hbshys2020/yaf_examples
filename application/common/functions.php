@@ -1,5 +1,16 @@
 <?php
 
+if (!function_exists('getconf'))
+{
+    function getconf($name)
+    {
+        $config = Yaf\Registry::get('config');
+        if(isset($config[$name])){
+            return $config[$name];
+        }
+        return [];
+    }
+}
 if (!function_exists('file_list'))
 {
     /**

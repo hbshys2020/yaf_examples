@@ -19,15 +19,24 @@ use Illuminate\Container\Container;
 class Bootstrap extends Yaf\Bootstrap_Abstract{
 
     protected $config;
-    public function _initConfig() {
-        //把配置保存起来
-        $this->config = Yaf\Application::app()->getConfig()->toArray();
-        Registry::set('config',$this->config);
-    }
 
     public function _initCommonFunctions(){
         //加载全局公共函数
         Loader::import(APP_PATH . '/common/functions.php');
+    }
+
+    public function _initConfig() {
+        //把配置保存起来
+        $this->config = Yaf\Application::app()->getConfig()->toArray();
+        //获取其他配置文件
+        $list = file_list(CONFIG_PATH);
+        foreach($list as $file){
+            if(substr($file,-3) == 'php'){
+                $name = substr(basename($file),0,-4);
+                $this->config[$name] = require $file;
+            }
+        }
+        Registry::set('config',$this->config);
     }
 
     public function _initPlugin(Yaf\Dispatcher $dispatcher) {
@@ -59,7 +68,6 @@ class Bootstrap extends Yaf\Bootstrap_Abstract{
             // 创建连接
             $capsule->addConnection($val,$name);
         }
-        // $capsule->addConnection($this->config['database']['gc_case']);
         $capsule->setEventDispatcher(new Dispatcher(new Container));
         // 设置全局静态可访问
         // Make this Capsule instance available globally via static methods... (optional)
